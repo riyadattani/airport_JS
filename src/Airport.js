@@ -1,3 +1,5 @@
+debugger
+
 function Airport() {
   this._hangar = [];
 };
@@ -7,12 +9,21 @@ Airport.prototype.clearForLanding = function(plane) {
 };
 
 Airport.prototype.clearForTakeoff = function() {
-  this._hanger.shift();
+  // console.log('this.isStormy')
+  if (this.isStormy === true){
+    throw new Error('cannot take off because of the storm')
+  } else {
+      this._hanger.shift();
+  }
 };
 
 
 Airport.prototype.hangarList = function () {
   return this._hangar;
+};
+
+Airport.prototype.isStormy = function () {
+  return false;
 };
 
 
